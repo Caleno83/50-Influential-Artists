@@ -1,0 +1,29 @@
+/* I created this mixins for styling */
+.style_center () {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .text_center () {
+    text-align: center;
+  }
+  
+  .style_column () {
+    flex-direction: column;
+  
+    align-items: center;
+  }
+  
+  .background_size () {
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  /* I created this parametric mixins for the contact button*/
+  .button_size ( @w, @p) {
+    width: @w;
+    padding: @p;
+  }
+  .button_style (@fs,@br) {
+    font-size: @fs;
+    border-radius: @br;
+  }
