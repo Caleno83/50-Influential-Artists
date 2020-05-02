@@ -202,17 +202,36 @@ const artists = [
 ]
 
 // 🖌🖼 M V P 🖼🖌 //
-
+/*I went to chrome and right clicked inspection, and later, I clicked console, and I could checked my JS work, and i added the result next to the problem*/
 /* Task 1: Practice accessing data above by console.log-ing following items:
 
 (1) Name of the first artist in the array
 (2) Bio of the third artist in the array */
+//This is task 1
+console.log(artists[0].name); 
+//Amedeo Modigliani
+
+//This is task 2
+console.log(artists[2].bio);
+//Diego María de la Concepción Juan Nepomuceno Estanislao de la Rivera y Barrientos Acosta y Rodríguez, known as Diego Rivera (Spanish pronunciation: [ˈdjeɣo riˈβeɾa]; December 8, 1886 – November 24, 1957) was a prominent Mexican painter. His large frescoes helped establish the Mexican mural movement in Mexican art. Between 1922 and 1953, Rivera painted murals in, among other places, Mexico City, Chapingo, Cuernavaca, San Francisco, Detroit, and New York City. In 1931, a retrospective exhibition of his works was held at the Museum of Modern Art in New York. Rivera had a volatile marriage with fellow Mexican artist Frida Kahlo.
 
 
 
 /* Task 2: There is a typo in your dataset 😱 The 9th artist, Vincent Van Gogh is currently Vincent Van Dough. Use an array method to fix this issue and console.log() to check your work. */
 
-
+artists.slice(8)[0].name ="Vicent Van Gogh"
+console.log(artists[8]);  //I used as a array method the slice().because when I was reserching it, it said that this method returns a portion of an array into a new array, and it worked for me.
+/*{
+  id: 8,
+  name: 'Vicent Van Gogh',
+  years: '1853 – 1890',
+  genre: 'Post-Impressionism',
+  nationality: 'Dutch',
+  bio: 'Vincent Willem van Gogh (Dutch: [ˈvɪnsɛnt ˈʋɪləm vɑŋ ˈɣɔx] (listen); 30 March 1853 – 29 July 1890) was a Dutch Post-Impressionist painter who is among the most famous and influential figures in the history of Western art. In just over a decade he created about 2,100 artworks, including around 860 oil paintings, most of them in the last two years of his life. They include landscapes, still lifes, portraits and self-portraits, and are characterised by bold colours and dramatic, impulsive and expressive brushwork that contributed to the foundations of modern art. However, he was not commercially successful, and his suicide at 37 followed years of mental illness and poverty.',
+  wikipedia: 'http://en.wikipedia.org/wiki/Vincent_van_Gogh',
+  paintings: 877
+}
+*/
 
 /* Task 3: Create a function called `getArtistByIndex` that takes two arguments:
  *     (1) artists array
@@ -222,9 +241,12 @@ const artists = [
  * For example, if getArtistByIndex is invoked with the inventory and the number 0,
  * it will return `The artist at index 0 is Amedeo Modigliani`.
 */
-function getArtistByIndex(id, name) {
-    /* code here */
+function getArtistByIndex(artists, index) {
+
+  return `The artist at index ${artists[index-0].id}  is ${artists[index-0].name}`
   }
+  getArtistByIndex(artists, 0)
+  //The artist at index 0  is Amedeo Modigliani
   
   /**
 
@@ -237,20 +259,48 @@ function getArtistByIndex(id, name) {
  * For example, if removeArtist is invoked with the data and the number 0,
  * it will remove Amedeo Modigliani from our dataset.
 */
-function removeArtist(/*code here*/) {
-    /* code here */
-  }
-  
-  /**
+function removeArtist(artists, id) {
+  const deleteArtist = delete artists[id].name
+  return deleteArtist;
+}
+
+removeArtist(artists, 0);
+
+console.log(artists);
+ // on this one, I didnt know if I had to delete all the array info of the artist or only the artist name.  So I just delete the artist name. 
+ // {id: 0, years: "1884 - 1920", genre: "Expressionism", nationality: "Italian", bio: "Amedeo Clemente ect.. 
+ /**
 
 
 /* Task 5: Create a function called lotsOfArt() that takes artists as an argument and returns an array with names of artists who painted more than 100 paintings */
 
-function lotsOfArt(/* Code here */){
-
-    /* Code here */
-
-  }
+function lotsOfArt(artists) {
+  let morePaintings100 = [];
+ 
+  for (let i = 0; i < artists.length; i++){
+ if (artists[i].paintings >= 100) {
+ morePaintings100.push(artists[i].name);
+ }
+ }
+  return morePaintings100;
+}
+console.log(lotsOfArt(artists));
+ /* The first one showed as undefined because the name was erased from last task.
+ 0: undefined
+1: "Rene Magritte"
+2: "Salvador Dali"
+3: "Vicent Van Gogh"
+4: "Gustav Klimt"
+5: "Hieronymus Bosch"
+6: "Kazimir Malevich"
+7: "Mikhail Vrubel"
+8: "Pablo Picasso"
+9: "Peter Paul Rubens"
+10: "Pierre-Auguste Renoir"
+11: "Francisco Goya"
+12: "Frida Kahlo"
+13: "Albrecht Dürer"
+*/ 
 
 
 /* Task 6: Create a function called `addArtist` that can accept an array of information and add it to the artists array. Then, Add a 21st artist to the array (you) with custom information! 👩‍🎨👨‍🎨
@@ -261,13 +311,52 @@ years: Your Birth Year - current day,
 genre: Web Design, 
 nationality: Your Nationality Here
 bio: Add 1-2 sentences (or use lorem ipsum) "*/
+//I didnt know if we had to only create info about me, or an array with info so I did both.
+function addArtist(artists) {
+  const newArrInfo = [ 20, "autor", "period", "job"];
+  const mySelfArtist = [ 
+      {"id": 21,
+      "name": "Jorge Jimenez",
+      "years": "1983 - Current day",
+      "genre": "Web Design", 
+      "nationality": "Colombia", 
+      "bio": "use lorem ipsum."}
+    ]
+    //I used concat() when I researched, it said that concat() is used to merge two or more arrays, and returns a new array with the new info.
+    const artistsArr1 = artists.concat(newArrInfo);
+    const artistsNew = artistsArr1.concat(mySelfArtist);
+    
+    return artistsNew;   
+}
+  
+console.log(addArtist(artists));
 
-function addArtist(/* Code here */){
-
-    /* Code here */
-
-  }
-
+/*
+0: {id: 0, years: "1884 - 1920", genre: "Expressionism", nationality: "Italian", bio: "Amedeo Clemente Modigliani (Italian pronunciation:…of the Section d'Or group at the Salon d'Automne.", …}
+1: {id: 1, name: "Vasiliy Kandinskiy", years: "1866 - 1944", genre: "Expressionism,Abstractionism", nationality: "Russian", …}
+2: {id: 2, name: "Diego Rivera", years: "1886 - 1957", genre: "Social Realism,Muralism", nationality: "Mexican", …}
+3: {id: 3, name: "Claude Monet", years: "1840 - 1926", genre: "Impressionism", nationality: "French", …}
+4: {id: 4, name: "Rene Magritte", years: "1898 - 1967", genre: "Surrealism,Impressionism", nationality: "Belgian", …}
+5: {id: 5, name: "Salvador Dali", years: "1904 - 1989", genre: "Surrealism", nationality: "Spanish", …}
+6: {id: 6, name: "Edouard Manet", years: "1832 - 1883", genre: "Realism,Impressionism", nationality: "French", …}
+7: {id: 7, name: "Andrei Rublev", years: "1360 - 1430", genre: "Byzantine Art", nationality: "Russian", …}
+8: {id: 8, name: "Vicent Van Gogh", years: "1853 – 1890", genre: "Post-Impressionism", nationality: "Dutch", …}
+9: {id: 9, name: "Gustav Klimt", years: "1862 - 1918", genre: "Symbolism,Art Nouveau", nationality: "Austrian", …}
+10: {id: 10, name: "Hieronymus Bosch", years: "1450 - 1516", genre: "Northern Renaissance", nationality: "Dutch", …}
+11: {id: 11, name: "Kazimir Malevich", years: "1879 - 1935", genre: "Suprematism", nationality: "Russian", …}
+12: {id: 12, name: "Mikhail Vrubel", years: "1856 - 1910", genre: "Symbolism", nationality: "Russian", …}
+13: {id: 13, name: "Pablo Picasso", years: "1881 - 1973", genre: "Cubism", nationality: "Spanish", …}
+14: {id: 14, name: "Peter Paul Rubens", years: "1577 - 1640", genre: "Baroque", nationality: "Flemish", …}
+15: {id: 15, name: "Pierre-Auguste Renoir", years: "1841 - 1919", genre: "Impressionism", nationality: "French", …}
+16: {id: 16, name: "Francisco Goya", years: "1746 - 1828", genre: "Romanticism", nationality: "Spanish", …}
+17: {id: 17, name: "Frida Kahlo", years: "1907 - 1954", genre: "Primitivism,Surrealism", nationality: "Mexican", …}
+18: {id: 18, name: "El Greco", years: "1541 - 1614", genre: "Mannerism", nationality: "Spanish,Greek", …}
+19: {id: 19, name: "Albrecht Dürer", years: "1471 - 1528", genre: "Northern Renaissance", nationality: "German", …}
+20: 20
+21: "autor"
+22: "period"
+23: "job"
+24: {id: 21, name: "Jorge Jimenez", years: "1983 - Current day", genre: "Web Design", nationality: "Colo etc...*/ 
 
 
 
